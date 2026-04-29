@@ -12,41 +12,41 @@
     },
     "variables": {
         "deploymentUrl": "[deployment().properties.templateLink.uri]",
-        "westeuropeVnetName": "westeurope-vnet",
-        "westeuropeVnetAddressPrefix": "10.1.0.0/16",
-        "westeuropeVnetResourceId": "[resourceId('Microsoft.Network/virtualNetworks', variables('westeuropeVnetName'))]",
-        "westeuropeNSGName": "westeurope-nsg",
-        "westeuropeNSGResourceId": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('westeuropeNSGName'))]",
-        "westeuropeVMName": "westeurope-vm",
-        "westeuropeVMNicName": "westeurope-vm-nic",
-        "westeuropeVMNicPIPName": "westeurope-vm-nic-pip",
-        "westeuropeSubnetName": "westeurope-subnet",
-        "westeuropeSubnetPrefix": "10.1.0.0/24",
-        "westeuropeVMDNSName": "[concat(variables('westeuropeVMName'), '-', uniqueString(resourceGroup().id))]",
-        "westeuropeVMNicResourceId": "[resourceId('Microsoft.Network/networkInterfaces', variables('westeuropeVMNicName'))]",
-        "westeuropeVMNicPIPResourceId": "[resourceId('Microsoft.Network/publicIPAddresses', variables('westeuropeVMNicPIPName'))]",
-        "westeuropeSubnetResourceId": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('westeuropeVnetName'), variables('westeuropeSubnetName'))]",
-        "westus2VnetName": "westus2-vnet",
-        "westus2VnetAddressPrefix": "10.2.0.0/16",
-        "westus2VnetResourceId": "[resourceId('Microsoft.Network/virtualNetworks', variables('westus2VnetName'))]",
-        "westus2NSGName": "westus2-nsg",
-        "westus2NSGResourceId": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('westus2NSGName'))]",
-        "westus2VMName": "westus2-vm",
-        "westus2VMNicName": "westus2-vm-nic",
-        "westus2VMNicPIPName": "westus2-vm-nic-pip",
-        "westus2SubnetName": "westus2-subnet",
-        "westus2SubnetPrefix": "10.2.0.0/24",
-        "westus2VMDNSName": "[concat(variables('westus2VMName'), '-', uniqueString(resourceGroup().id))]",
-        "westus2VMNicResourceId": "[resourceId('Microsoft.Network/networkInterfaces', variables('westus2VMNicName'))]",
-        "westus2VMNicPIPResourceId": "[resourceId('Microsoft.Network/publicIPAddresses', variables('westus2VMNicPIPName'))]",
-        "westus2SubnetResourceId": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('westus2VnetName'), variables('westus2SubnetName'))]"
+        "northeuropeVnetName": "northeurope-vnet",
+        "northeuropeVnetAddressPrefix": "10.1.0.0/16",
+        "northeuropeVnetResourceId": "[resourceId('Microsoft.Network/virtualNetworks', variables('northeuropeVnetName'))]",
+        "northeuropeNSGName": "northeurope-nsg",
+        "northeuropeNSGResourceId": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('northeuropeNSGName'))]",
+        "northeuropeVMName": "northeurope-vm",
+        "northeuropeVMNicName": "northeurope-vm-nic",
+        "northeuropeVMNicPIPName": "northeurope-vm-nic-pip",
+        "northeuropeSubnetName": "northeurope-subnet",
+        "northeuropeSubnetPrefix": "10.1.0.0/24",
+        "northeuropeVMDNSName": "[concat(variables('northeuropeVMName'), '-', uniqueString(resourceGroup().id))]",
+        "northeuropeVMNicResourceId": "[resourceId('Microsoft.Network/networkInterfaces', variables('northeuropeVMNicName'))]",
+        "northeuropeVMNicPIPResourceId": "[resourceId('Microsoft.Network/publicIPAddresses', variables('northeuropeVMNicPIPName'))]",
+        "northeuropeSubnetResourceId": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('northeuropeVnetName'), variables('northeuropeSubnetName'))]",
+        "eastus2VnetName": "eastus2-vnet",
+        "eastus2VnetAddressPrefix": "10.2.0.0/16",
+        "eastus2VnetResourceId": "[resourceId('Microsoft.Network/virtualNetworks', variables('eastus2VnetName'))]",
+        "eastus2NSGName": "eastus2-nsg",
+        "eastus2NSGResourceId": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('eastus2NSGName'))]",
+        "eastus2VMName": "eastus2-vm",
+        "eastus2VMNicName": "eastus2-vm-nic",
+        "eastus2VMNicPIPName": "eastus2-vm-nic-pip",
+        "eastus2SubnetName": "eastus2-subnet",
+        "eastus2SubnetPrefix": "10.2.0.0/24",
+        "eastus2VMDNSName": "[concat(variables('eastus2VMName'), '-', uniqueString(resourceGroup().id))]",
+        "eastus2VMNicResourceId": "[resourceId('Microsoft.Network/networkInterfaces', variables('eastus2VMNicName'))]",
+        "eastus2VMNicPIPResourceId": "[resourceId('Microsoft.Network/publicIPAddresses', variables('eastus2VMNicPIPName'))]",
+        "eastus2SubnetResourceId": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('eastus2VnetName'), variables('eastus2SubnetName'))]"
     },
     "resources": [
         {
             "type": "Microsoft.Network/networkSecurityGroups",
-            "name": "[variables('westeuropeNSGName')]",
+            "name": "[variables('northeuropeNSGName')]",
             "apiVersion": "2018-08-01",
-            "location": "westeurope",
+            "location": "northeurope",
             "properties": {
                 "securityRules": [
                     {
@@ -68,9 +68,9 @@
         },
         {
             "type": "Microsoft.Network/networkSecurityGroups",
-            "name": "[variables('westus2NSGName')]",
+            "name": "[variables('eastus2NSGName')]",
             "apiVersion": "2018-08-01",
-            "location": "westus2",
+            "location": "eastus2",
             "properties": {
                 "securityRules": [
                     {
@@ -92,20 +92,20 @@
         },
         {
             "type": "Microsoft.Network/virtualNetworks",
-            "name": "[variables('westeuropeVnetName')]",
+            "name": "[variables('northeuropeVnetName')]",
             "apiVersion": "2018-08-01",
-            "location": "westeurope",
+            "location": "northeurope",
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
-                        "[variables('westeuropeVnetAddressPrefix')]"
+                        "[variables('northeuropeVnetAddressPrefix')]"
                     ]
                 },
                 "subnets": [
                     {
-                        "name": "[variables('westeuropeSubnetName')]",
+                        "name": "[variables('northeuropeSubnetName')]",
                         "properties": {
-                            "addressPrefix": "[variables('westeuropeSubnetPrefix')]"
+                            "addressPrefix": "[variables('northeuropeSubnetPrefix')]"
                         }
                     }
                 ]
@@ -114,20 +114,20 @@
         },
         {
             "type": "Microsoft.Network/virtualNetworks",
-            "name": "[variables('westus2VnetName')]",
+            "name": "[variables('eastus2VnetName')]",
             "apiVersion": "2018-08-01",
-            "location": "westus2",
+            "location": "eastus2",
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
-                        "[variables('westus2VnetAddressPrefix')]"
+                        "[variables('eastus2VnetAddressPrefix')]"
                     ]
                 },
                 "subnets": [
                     {
-                        "name": "[variables('westus2SubnetName')]",
+                        "name": "[variables('eastus2SubnetName')]",
                         "properties": {
-                            "addressPrefix": "[variables('westus2SubnetPrefix')]"
+                            "addressPrefix": "[variables('eastus2SubnetPrefix')]"
                         }
                     }
                 ]
@@ -140,14 +140,14 @@
                 "name": "Basic",
                 "tier": "Regional"
             },
-            "name": "[variables('westeuropeVMNicPIPName')]",
+            "name": "[variables('northeuropeVMNicPIPName')]",
             "apiVersion": "2018-08-01",
-            "location": "westeurope",
+            "location": "northeurope",
             "properties": {
                 "publicIPAddressVersion": "IPv4",
                 "publicIPAllocationMethod": "Static",
                 "dnsSettings": {
-                    "domainNameLabel": "[variables('westeuropeVMDNSName')]"
+                    "domainNameLabel": "[variables('northeuropeVMDNSName')]"
                 }
             },
             "dependsOn": []
@@ -158,23 +158,23 @@
                 "name": "Basic",
                 "tier": "Regional"
             },
-            "name": "[variables('westus2VMNicPIPName')]",
+            "name": "[variables('eastus2VMNicPIPName')]",
             "apiVersion": "2018-08-01",
-            "location": "westus2",
+            "location": "eastus2",
             "properties": {
                 "publicIPAddressVersion": "IPv4",
                 "publicIPAllocationMethod": "Static",
                 "dnsSettings":{
-                    "domainNameLabel": "[variables('westus2VMDNSName')]"
+                    "domainNameLabel": "[variables('eastus2VMDNSName')]"
                 }
             },
             "dependsOn": []
         },
         {
             "type": "Microsoft.Network/networkInterfaces",
-            "name": "[variables('westeuropeVMNicName')]",
+            "name": "[variables('northeuropeVMNicName')]",
             "apiVersion": "2018-08-01",
-            "location": "westeurope",
+            "location": "northeurope",
             "scale": null,
             "properties": {
                 "ipConfigurations": [
@@ -184,10 +184,10 @@
                             "privateIPAddress": "10.1.0.4",
                             "privateIPAllocationMethod": "Static",
                             "publicIPAddress": {
-                                "id": "[variables('westeuropeVMNicPIPResourceId')]"
+                                "id": "[variables('northeuropeVMNicPIPResourceId')]"
                             },
                             "subnet": {
-                                "id": "[variables('westeuropeSubnetResourceId')]"
+                                "id": "[variables('northeuropeSubnetResourceId')]"
                             },
                             "primary": true,
                             "privateIPAddressVersion": "IPv4"
@@ -198,20 +198,20 @@
                 "enableIPForwarding": false,
                 "primary": true,
                 "networkSecurityGroup": {
-                    "id": "[variables('westeuropeNSGResourceId')]"
+                    "id": "[variables('northeuropeNSGResourceId')]"
                 }
             },
             "dependsOn": [
-                "[variables('westeuropeVMNicPIPName')]",
-                "[variables('westeuropeVnetResourceId')]",
-                "[variables('westeuropeNSGResourceId')]"
+                "[variables('northeuropeVMNicPIPName')]",
+                "[variables('northeuropeVnetResourceId')]",
+                "[variables('northeuropeNSGResourceId')]"
             ]
         },
         {
             "type": "Microsoft.Network/networkInterfaces",
-            "name": "[variables('westus2VMNicName')]",
+            "name": "[variables('eastus2VMNicName')]",
             "apiVersion": "2018-08-01",
-            "location": "westus2",
+            "location": "eastus2",
             "scale": null,
             "properties": {
                 "ipConfigurations": [
@@ -221,10 +221,10 @@
                             "privateIPAddress": "10.2.0.4",
                             "privateIPAllocationMethod": "Static",
                             "publicIPAddress": {
-                                "id": "[variables('westus2VMNicPIPResourceId')]"
+                                "id": "[variables('eastus2VMNicPIPResourceId')]"
                             },
                             "subnet": {
-                                "id": "[variables('westus2SubnetResourceId')]"
+                                "id": "[variables('eastus2SubnetResourceId')]"
                             },
                             "primary": true,
                             "privateIPAddressVersion": "IPv4"
@@ -235,20 +235,20 @@
                 "enableIPForwarding": false,
                 "primary": true,
                 "networkSecurityGroup": {
-                    "id": "[variables('westus2NSGResourceId')]"
+                    "id": "[variables('eastus2NSGResourceId')]"
                 }
             },
             "dependsOn": [
-                "[variables('westus2VMNicPIPName')]",
-                "[variables('westus2VnetResourceId')]",
-                "[variables('westus2NSGResourceId')]"
+                "[variables('eastus2VMNicPIPName')]",
+                "[variables('eastus2VnetResourceId')]",
+                "[variables('eastus2NSGResourceId')]"
             ]
         },
         {
             "type": "Microsoft.Compute/virtualMachines",
-            "name": "[variables('westeuropeVMName')]",
+            "name": "[variables('northeuropeVMName')]",
             "apiVersion": "2018-06-01",
-            "location": "westeurope",
+            "location": "northeurope",
             "properties": {
                 "hardwareProfile": {
                     "vmSize": "Standard_B1s"
@@ -262,7 +262,7 @@
                     },
                     "osDisk": {
                         "osType": "Linux",
-                        "name": "[concat(variables('westeuropeVMName'), '-disk')]",
+                        "name": "[concat(variables('northeuropeVMName'), '-disk')]",
                         "createOption": "FromImage",
                         "caching": "ReadWrite",
                         "managedDisk": {
@@ -273,7 +273,7 @@
                     "dataDisks": []
                 },
                 "osProfile": {
-                    "computerName": "[variables('westeuropeVMName')]",
+                    "computerName": "[variables('northeuropeVMName')]",
                     "adminUsername": "[parameters('username')]",
                     "adminPassword": "[parameters('password')]",
                     "linuxConfiguration": {
@@ -286,7 +286,7 @@
                 "networkProfile": {
                     "networkInterfaces": [
                         {
-                            "id": "[variables('westeuropeVMNicResourceId')]"
+                            "id": "[variables('northeuropeVMNicResourceId')]"
                         }
                     ]
                 },
@@ -301,7 +301,7 @@
                     "type": "extensions",
                     "name": "apache-ext",
                     "apiVersion": "2018-10-01",
-                    "location": "westeurope",
+                    "location": "northeurope",
                     "properties": {
                         "publisher": "Microsoft.Azure.Extensions",
                         "type": "CustomScript",
@@ -311,26 +311,26 @@
                             "skipDos2Unix": true
                         },
                         "protectedSettings": {
-                            "commandToExecute": "sh setup-nginx.sh westeurope",
+                            "commandToExecute": "sh setup-nginx.sh northeurope",
                             "fileUris": [
                                 "[uri(variables('deploymentUrl'), 'setup-nginx.sh')]"
                             ]
                         }
                     },
                     "dependsOn": [
-                        "[variables('westeuropeVMName')]"
+                        "[variables('northeuropeVMName')]"
                     ]
                 }
             ],
             "dependsOn": [
-                "[variables('westeuropeVMNicName')]"
+                "[variables('northeuropeVMNicName')]"
             ]
         },
         {
             "type": "Microsoft.Compute/virtualMachines",
-            "name": "[variables('westus2VMName')]",
+            "name": "[variables('eastus2VMName')]",
             "apiVersion": "2018-06-01",
-            "location": "westus2",
+            "location": "eastus2",
             "properties": {
                 "hardwareProfile": {
                     "vmSize": "Standard_B1s"
@@ -344,7 +344,7 @@
                     },
                     "osDisk": {
                         "osType": "Linux",
-                        "name": "[concat(variables('westus2VMName'), '-disk')]",
+                        "name": "[concat(variables('eastus2VMName'), '-disk')]",
                         "createOption": "FromImage",
                         "caching": "ReadWrite",
                         "managedDisk": {
@@ -355,7 +355,7 @@
                     "dataDisks": []
                 },
                 "osProfile": {
-                    "computerName": "[variables('westus2VMName')]",
+                    "computerName": "[variables('eastus2VMName')]",
                     "adminUsername": "[parameters('username')]",
                     "adminPassword": "[parameters('password')]",
                     "linuxConfiguration": {
@@ -368,7 +368,7 @@
                 "networkProfile": {
                     "networkInterfaces": [
                         {
-                            "id": "[variables('westus2VMNicResourceId')]"
+                            "id": "[variables('eastus2VMNicResourceId')]"
                         }
                     ]
                 },
@@ -383,7 +383,7 @@
                     "type": "extensions",
                     "name": "apache-ext",
                     "apiVersion": "2018-10-01",
-                    "location": "westus2",
+                    "location": "eastus2",
                     "properties": {
                         "publisher": "Microsoft.Azure.Extensions",
                         "type": "CustomScript",
@@ -393,19 +393,19 @@
                             "skipDos2Unix": true
                         },
                         "protectedSettings": {
-                            "commandToExecute": "sh setup-nginx.sh westus2",
+                            "commandToExecute": "sh setup-nginx.sh eastus2",
                             "fileUris": [
                                 "[uri(variables('deploymentUrl'), 'setup-nginx.sh')]"
                             ]
                         }
                     },
                     "dependsOn": [
-                        "[variables('westus2VMName')]"
+                        "[variables('eastus2VMName')]"
                     ]
                 }
             ],
             "dependsOn": [
-                "[variables('westus2VMNicName')]"
+                "[variables('eastus2VMNicName')]"
             ]
         }
     ],
